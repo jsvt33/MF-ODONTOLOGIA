@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dr. Marcel Ferroni | Odontologia Estética</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+/* ══════════════════════════════════════════
+   ⚙️  CONFIGURAÇÕES — edite antes de publicar
+   ══════════════════════════════════════════ */
+const CONFIG = {
+  ANTHROPIC_KEY:       "SUA_CHAVE_ANTHROPIC_AQUI",
+  EMAILJS_PUBLIC_KEY:  "SUA_PUBLIC_KEY_EMAILJS",
+  EMAILJS_SERVICE_ID:  "SUA_SERVICE_ID_EMAILJS",
+  EMAILJS_TEMPLATE_ID: "SUA_TEMPLATE_ID_EMAILJS",
+  SEU_EMAIL:           "seu@email.com.br",
+  WHATSAPP:            "5511943123230",
+  INSTAGRAM:           "https://www.instagram.com/dr.marcelmoura",
+};
+</script>
+
+<style>
+:root {
+  --cream:   #F5F0E8;
+  --cream-d: #EDE5D8;
+  --taupe:   #C4B5A0;
+  --brown:   #3D2B1F;
+  --brown-l: #6B4A38;
+  --copper:  #C4956A;
+  --copper-l:#D4A882;
+  --white:   #FFFFFF;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;background:var(--cream);color:var(--brown);font-family:'Poppins',sans-serif;overflow-x:hidden}
+
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
+
+.bg-orbs{position:fixed;inset:0;pointer-events:none;z-index:0}
+.orb{position:absolute;border-radius:50%;filter:blur(90px)}
+.orb1{width:420px;height:420px;top:-80px;right:-120px;background:rgba(196,149,106,.14)}
+.orb2{width:300px;height:300px;bottom:-70px;left:-80px;background:rgba(196,181,160,.11)}
+
+/* ── BIO PAGE ── */
+.page{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:0 24px 64px}
+
+.ornament-top{width:1px;height:50px;background:linear-gradient(to bottom,transparent,var(--copper));animation:fadeDown .8s ease forwards;opacity:0}
+
+.avatar-wrap{margin-top:0;animation:fadeUp .9s .25s ease forwards;opacity:0}
+.avatar-ring{width:118px;height:118px;border-radius:50%;padding:2.5px;background:linear-gradient(135deg,var(--copper),var(--brown-l),var(--copper));box-shadow:0 0 40px rgba(196,149,106,.25)}
+.avatar-inner{width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--cream-d)}
+.avatar-inner img{width:100%;height:100%;object-fit:cover;object-position:center top}
+
+.header{text-align:center;margin-top:18px;animation:fadeUp .9s .45s ease forwards;opacity:0}
+.name{font-family:'Lora',serif;font-size:1.65rem;font-weight:400;letter-spacing:3px;color:var(--brown);line-height:1.2}
+.name span{color:var(--copper)}
+.specialty{font-size:.58rem;font-weight:300;letter-spacing:5px;text-transform:uppercase;color:var(--copper);margin-top:7px}
+.cro{font-size:.52rem;letter-spacing:3px;color:var(--taupe);margin-top:4px;font-weight:200}
+
+.divider{display:flex;align-items:center;gap:12px;margin:26px 0;width:100%;max-width:320px;animation:fadeUp .9s .65s ease forwards;opacity:0}
+.div-line{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--taupe))}
+.div-line.r{background:linear-gradient(to left,transparent,var(--taupe))}
+.div-diamond{width:5px;height:5px;background:var(--copper);transform:rotate(45deg);flex-shrink:0}
+
+.links{display:flex;flex-direction:column;gap:12px;width:100%;max-width:320px}
+
+.btn{display:flex;align-items:center;gap:14px;padding:15px 22px;border-radius:3px;text-decoration:none;font-family:'Poppins',sans-serif;font-size:.63rem;letter-spacing:3px;text-transform:uppercase;font-weight:300;transition:all .3s ease;position:relative;overflow:hidden;opacity:0;cursor:pointer;border:none}
+.btn::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(196,149,106,.09),transparent);transform:translateX(-100%);transition:transform .5s ease}
+.btn:hover::before{transform:translateX(100%)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(61,43,31,.1)}
+
+.btn-agenda{background:linear-gradient(135deg,var(--brown),var(--brown-l));color:var(--cream);font-weight:400;animation:fadeUp .9s .8s ease forwards;box-shadow:0 4px 22px rgba(61,43,31,.2)}
+.btn-agenda:hover{box-shadow:0 10px 32px rgba(61,43,31,.3)}
+
+.btn-consulta{background:linear-gradient(135deg,var(--copper),var(--copper-l));color:var(--white);font-weight:400;animation:fadeUp .9s .92s ease forwards;box-shadow:0 4px 18px rgba(196,149,106,.3)}
+.btn-consulta:hover{box-shadow:0 10px 28px rgba(196,149,106,.4)}
+
+.btn-whats{background:var(--white);border:1px solid rgba(196,149,106,.35);color:var(--brown);animation:fadeUp .9s 1.05s ease forwards}
+.btn-whats:hover{border-color:var(--copper)}
+
+.btn-insta{background:var(--white);border:1px solid rgba(196,149,106,.35);color:var(--brown);animation:fadeUp .9s 1.18s ease forwards}
+.btn-insta:hover{border-color:var(--copper)}
+
+.btn-icon{width:17px;height:17px;flex-shrink:0}
+
+.footer{margin-top:44px;text-align:center;animation:fadeUp .9s 1.35s ease forwards;opacity:0}
+.footer-quote{font-family:'Lora',serif;font-style:italic;font-size:.82rem;color:var(--brown-l);letter-spacing:.5px;line-height:1.95;opacity:.8}
+.footer-line{width:1px;height:32px;background:linear-gradient(to bottom,var(--taupe),transparent);margin:12px auto 0}
+
+/* ══════════════════════
+   MODAL DE CONSULTA
+   ══════════════════════ */
+.modal-overlay{position:fixed;inset:0;background:rgba(61,43,31,.55);backdrop-filter:blur(4px);z-index:100;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s ease}
+.modal-overlay.open{opacity:1;pointer-events:all}
+
+.modal-box{background:var(--cream);width:100%;max-width:480px;border-radius:22px 22px 0 0;padding:0;max-height:92vh;overflow-y:auto;transform:translateY(100%);transition:transform .4s cubic-bezier(.22,1,.36,1)}
+.modal-overlay.open .modal-box{transform:translateY(0)}
+
+.modal-handle{width:40px;height:4px;background:var(--taupe);border-radius:2px;margin:14px auto 0}
+.modal-inner{padding:24px 28px 40px}
+
+/* step dots */
+.step-dots{display:flex;justify-content:center;gap:6px;margin:18px 0}
+.sdot{height:7px;border-radius:4px;background:rgba(196,181,160,.4);transition:all .35s ease}
+.sdot.active{width:26px;background:var(--brown)}
+.sdot.done{width:7px;background:var(--copper)}
+.sdot.idle{width:7px}
+
+/* card dentro do modal */
+.mc-title{font-family:'Lora',serif;font-size:20px;font-weight:600;margin-bottom:7px;color:var(--brown)}
+.mc-sub{font-size:13px;color:var(--brown-l);margin-bottom:22px;line-height:1.6}
+
+label.lbl{display:block;font-size:11px;font-weight:600;color:var(--brown-l);letter-spacing:.09em;text-transform:uppercase;margin-bottom:7px}
+input,textarea{width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid var(--cream-d);background:var(--white);font-family:'Poppins',sans-serif;font-size:14px;color:var(--brown);outline:none;transition:border .2s,box-shadow .2s}
+input:focus,textarea:focus{border-color:var(--copper);box-shadow:0 0 0 3px rgba(196,149,106,.15)}
+textarea{resize:vertical;min-height:100px}
+.field{margin-bottom:16px}
+
+/* grid especialidades */
+.spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:20px}
+.spec-btn{padding:13px 11px;border-radius:12px;border:1.5px solid var(--cream-d);background:var(--white);cursor:pointer;text-align:left;display:flex;align-items:center;gap:9px;transition:all .2s;font-family:'Poppins',sans-serif}
+.spec-btn:hover{border-color:var(--copper);background:rgba(196,149,106,.06)}
+.spec-btn.sel{border-color:var(--copper);background:rgba(196,149,106,.12)}
+.spec-icon{font-size:16px;color:var(--copper);width:20px;text-align:center;flex-shrink:0}
+.spec-label{font-size:12px;color:var(--brown-l);line-height:1.3}
+.spec-btn.sel .spec-label{font-weight:600;color:var(--brown)}
+
+/* urgência */
+.urg-btn{width:100%;padding:12px 15px;border-radius:12px;border:1.5px solid var(--cream-d);background:var(--white);cursor:pointer;text-align:left;display:flex;align-items:center;gap:11px;margin-bottom:8px;transition:all .2s;font-family:'Poppins',sans-serif}
+.urg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.urg-label{font-size:13px;color:var(--brown)}
+
+/* botão primário modal */
+.mbtn{width:100%;padding:16px 22px;border-radius:13px;background:linear-gradient(135deg,var(--copper),var(--brown-l));color:#fff;font-size:14px;font-weight:600;border:none;cursor:pointer;font-family:'Poppins',sans-serif;transition:opacity .2s,transform .12s;margin-top:6px;display:block}
+.mbtn:hover{opacity:.88;transform:translateY(-1px)}
+.mbtn:disabled{opacity:.35;cursor:not-allowed;transform:none}
+.mbtn-ghost{padding:11px 20px;border-radius:12px;background:transparent;color:var(--brown-l);font-size:13px;border:1.5px solid var(--taupe);cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s}
+.mbtn-ghost:hover{border-color:var(--brown-l)}
+.row-btns{display:flex;gap:10px;align-items:center}
+.row-btns .mbtn{flex:1;margin-top:0}
+
+.divider-m{height:1px;background:linear-gradient(to right,transparent,rgba(196,181,160,.5),transparent);margin:20px 0}
+
+/* loading */
+.loading-wrap{text-align:center;padding:40px 16px}
+.loading-icon{font-size:36px;color:var(--copper);animation:pulse 1.5s ease-in-out infinite;display:block;margin-bottom:18px}
+.dots{display:flex;gap:7px;justify-content:center;margin-top:26px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--copper);animation:pulse 1.2s ease-in-out infinite}
+.dot:nth-child(2){animation-delay:.2s}
+.dot:nth-child(3){animation-delay:.4s}
+
+/* resposta */
+.dr-header{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.dr-avatar{width:44px;height:44px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--copper),var(--brown-l));display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px;font-weight:700;font-family:'Lora',serif}
+.dr-name{font-weight:700;font-size:13px;color:var(--brown)}
+.dr-cro{font-size:11px;color:var(--taupe)}
+
+.tag-spec{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;background:rgba(196,149,106,.1);border:1px solid rgba(196,149,106,.25);font-size:11px;font-weight:600;color:var(--copper);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
+
+.resp-body{font-size:14px;line-height:1.85;color:var(--brown)}
+.resp-body ul{padding-left:18px;margin:8px 0}
+.resp-body li{margin-bottom:6px}
+.resp-body h3{font-family:'Lora',serif;font-size:15px;color:var(--brown);margin:16px 0 7px}
+.resp-body p{margin-bottom:12px}
+.resp-body strong{font-weight:600}
+
+/* cta box */
+.cta-box{background:linear-gradient(135deg,var(--brown),var(--brown-l));border-radius:18px;padding:28px;color:#fff;margin-top:18px}
+.cta-box h3{font-family:'Lora',serif;font-size:19px;font-weight:600;margin-bottom:8px}
+.cta-box p{font-size:12px;color:rgba(245,240,232,.8);margin-bottom:22px;line-height:1.65}
+.btn-wapp{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:15px;border-radius:13px;background:#25D366;color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer;font-family:'Poppins',sans-serif;text-decoration:none;margin-bottom:10px;transition:opacity .2s}
+.btn-wapp:hover{opacity:.9}
+.btn-reset{display:flex;align-items:center;justify-content:center;width:100%;padding:13px;border-radius:13px;background:rgba(196,149,106,.15);border:1.5px solid rgba(196,149,106,.4);color:var(--copper-l);font-size:13px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s}
+.btn-reset:hover{background:rgba(196,149,106,.25)}
+
+/* toast */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--brown);color:#fff;padding:13px 22px;border-radius:13px;font-size:13px;font-weight:500;z-index:999;transition:transform .4s ease;display:flex;align-items:center;gap:9px;box-shadow:0 8px 28px rgba(61,43,31,.22);white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* animações */
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.65}50%{transform:scale(1.28);opacity:1}}
+
+@media(min-width:480px){.modal-box{border-radius:22px;margin:auto;max-height:88vh}}
+</style>
+</head>
+<body>
+
+<div class="bg-orbs"><div class="orb orb1"></div><div class="orb orb2"></div></div>
+
+<!-- ══════════ BIO PAGE ══════════ -->
+<div class="page">
+
+  <div class="ornament-top"></div>
+
+  <div class="avatar-wrap">
+    <div class="avatar-ring">
+      <div class="avatar-inner">
+        <img id="photo" src="" alt="Dr. Marcel Ferroni"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="header">
+    <div class="name"><span>Dr.</span> Marcel Ferroni</div>
+    <div class="specialty">Odontologia Estética</div>
+    <div class="cro">CRO-SP 140.427 · Mauá, ABC Paulista</div>
+  </div>
+
+  <div class="divider">
+    <div class="div-line"></div>
+    <div class="div-diamond"></div>
+    <div class="div-line r"></div>
+  </div>
+
+  <div class="links">
+
+    <!-- Agendar -->
+    <a class="btn btn-agenda"
+       href="https://wa.me/5511943123230?text=Ol%C3%A1%2C%20Dr.%20Marcel!%20Gostaria%20de%20agendar%20uma%20consulta.%20%F0%9F%98%8A"
+       target="_blank">
+      <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+        <rect x="3" y="4" width="18" height="17" rx="2" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M3 9h18M8 2v4M16 2v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M7 13h2M11 13h2M15 13h2M7 17h2M11 17h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Agendar Consulta
+    </a>
+
+    <!-- Consulta Online por IA -->
+    <button class="btn btn-consulta" id="btnAbrirConsulta">
+      <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="currentColor"/>
+      </svg>
+      Consulta Online Gratuita
+    </button>
+
+    <!-- WhatsApp -->
+    <a class="btn btn-whats" href="https://wa.me/5511943123230" target="_blank">
+      <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="var(--copper)"/>
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.392A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.96 7.96 0 01-4.076-1.117l-.292-.174-3.035.849.855-3.12-.19-.31A7.963 7.963 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z" fill="var(--copper)"/>
+      </svg>
+      Fale pelo WhatsApp
+    </a>
+
+    <!-- Instagram -->
+    <a class="btn btn-insta" href="https://www.instagram.com/dr.marcelmoura" target="_blank">
+      <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+        <rect x="2" y="2" width="20" height="20" rx="5" stroke="var(--copper)" stroke-width="1.5"/>
+        <circle cx="12" cy="12" r="4" stroke="var(--copper)" stroke-width="1.5"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="var(--copper)"/>
+      </svg>
+      @dr.marcelmoura
+    </a>
+
+  </div>
+
+  <div class="footer">
+    <p class="footer-quote">"Um sorriso saudável não é um luxo.<br/>É a sua presença no mundo."</p>
+    <div class="footer-line"></div>
+  </div>
+
+</div>
+
+<!-- ══════════ MODAL CONSULTA ══════════ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <div class="modal-handle"></div>
+    <div class="modal-inner" id="modalInner">
+      <!-- conteúdo injetado via JS -->
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✦ Dados recebidos com sucesso!</div>
+
+<script>
+/* ─── DADOS ─── */
+const SPECS = [
+  {icon:'✦',label:'Dor ou desconforto',key:'dor'},
+  {icon:'◈',label:'Estética e sorriso',key:'estetica'},
+  {icon:'⬡',label:'Gengiva e periodonto',key:'gengiva'},
+  {icon:'◎',label:'Implantes e cirurgia',key:'implante'},
+  {icon:'⟐',label:'Crianças e adolescentes',key:'infantil'},
+  {icon:'⬭',label:'Alinhamento e mordida',key:'ortodontia'},
+  {icon:'◇',label:'Bruxismo e DTM',key:'bruxismo'},
+  {icon:'✧',label:'Outra dúvida',key:'outro'},
+];
+const URGENCY = [
+  {label:'Urgente — preciso de ajuda agora',value:'urgente',color:'#C0392B'},
+  {label:'Breve — em poucos dias',value:'breve',color:'#E67E22'},
+  {label:'Tranquilo — posso aguardar',value:'tranquilo',color:'#27AE60'},
+];
+const SYS = `Você é o assistente virtual do Dr. Marcel Ferroni, odontologista especialista em Odontologia Estética em Mauá, SP (CRO-SP 140.427). O consultório Marcel Ferroni Odontologia Estética é uma clínica boutique de alta experiência, focada em atendimento personalizado, transformação estética e saúde bucal completa.
+
+Seu papel:
+- Acolher o paciente com warmth e empatia genuína
+- Entender a queixa principal com perguntas cirúrgicas e empáticas
+- Orientar de forma clara, sem substituir a consulta presencial
+- Ao final, SEMPRE converter para o agendamento presencial de forma natural
+
+Tom: caloroso, profissional, sofisticado. Nunca robótico.
+
+Estrutura obrigatória da resposta:
+1. Acolhimento personalizado (1-2 linhas com o nome do paciente, reconhecendo o que ele sente)
+2. Análise da situação com empatia (2-3 parágrafos explicando o contexto clínico de forma acessível)
+3. O que pode estar acontecendo (bullet points com possibilidades — NUNCA diagnóstico definitivo, sempre use "pode ser", "é possível que")
+4. Orientações imediatas e práticas que o paciente pode seguir agora
+5. Por que a consulta presencial é essencial para o caso específico dele
+6. Feche sempre com: "Seu sorriso merece cuidado real. Vamos conversar pessoalmente?"
+
+REGRAS IMPORTANTES:
+- Nunca faça diagnóstico definitivo
+- Sempre enfatize a necessidade da avaliação presencial
+- Máximo 380 palavras
+- Use linguagem acolhedora e acessível, sem termos técnicos excessivos
+- Demonstre que o Dr. Marcel se importa genuinamente com o paciente`;
+
+/* ─── STATE ─── */
+const S = {step:0,nome:'',email:'',tel:'',spec:null,urg:null,desc:'',resp:''};
+
+/* ─── HELPERS ─── */
+const $i = id => document.getElementById(id);
+const wurl = (nome,spec) => `https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent(`Olá Dr. Marcel! Me chamo ${nome||'paciente'} e fiz a consulta online sobre "${spec||'saúde bucal'}". Gostaria de agendar uma consulta presencial. 😊`)}`;
+function toast(m='✦ Lead registrado!'){const t=$i('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200)}
+function md(t){return t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\*(.*?)\*/g,'<em>$1</em>').replace(/^### (.*$)/gm,'<h3>$1</h3>').replace(/^[•\-] (.*$)/gm,'<li>$1</li>').replace(/(<li>.*<\/li>\n?)+/g,m=>`<ul>${m}</ul>`).replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br/>')}
+function dots(step){const max=3;return`<div class="step-dots">${Array.from({length:max},(_,i)=>`<div class="sdot ${i===step?'active':i<step?'done':'idle'}"></div>`).join('')}</div>`}
+
+/* ─── RENDER ─── */
+function render(){
+  const mi=$i('modalInner');
+  if(S.step===0)mi.innerHTML=screen0();
+  if(S.step===1)mi.innerHTML=screen1();
+  if(S.step===2)mi.innerHTML=screen2();
+  if(S.step===3)mi.innerHTML=screen3();
+  if(S.step===4)mi.innerHTML=screen4();
+  bind();
+}
+
+function screen0(){return`
+${dots(0)}
+<h2 class="mc-title">Consulta Online Gratuita</h2>
+<p class="mc-sub">Tire sua dúvida com o Dr. Marcel sem sair de casa. Orientação personalizada, sem compromisso.</p>
+<div style="background:var(--cream-d);border-radius:13px;padding:18px;margin-bottom:22px">
+  ${[['✦','Gratuito e sem compromisso'],['◈','Resposta imediata por IA'],['⟐','Sempre com indicação de consulta']].map(([i,t])=>`<div style="display:flex;gap:12px;align-items:center;margin-bottom:12px"><span style="color:var(--copper);font-size:16px;width:20px;text-align:center">${i}</span><span style="font-size:13px;color:var(--brown-l)">${t}</span></div>`).join('')}
+</div>
+<button class="mbtn" id="s0next">Começar →</button>`}
+
+function screen1(){const ok=S.nome.trim().length>=2;return`
+${dots(0)}
+<h2 class="mc-title">Quem é você?</h2>
+<p class="mc-sub">Para personalizar sua orientação.</p>
+<div class="field"><label class="lbl">Nome *</label><input id="iNome" placeholder="Como posso te chamar?" value="${S.nome}"/></div>
+<div class="field"><label class="lbl">E-mail</label><input id="iEmail" type="email" placeholder="seu@email.com" value="${S.email}"/></div>
+<div class="field"><label class="lbl">WhatsApp</label><input id="iTel" type="tel" placeholder="(11) 99999-9999" value="${S.tel}"/></div>
+<div class="divider-m"></div>
+<button class="mbtn" id="s1next" ${ok?'':'disabled'}>Continuar →</button>`}
+
+function screen2(){
+  const ok=S.spec&&S.urg&&S.desc.trim().length>10;
+  const fn=S.nome.split(' ')[0];
+  return`
+${dots(1)}
+<h2 class="mc-title">O que está sentindo?</h2>
+<p class="mc-sub">Selecione a área e descreva com suas palavras.</p>
+<label class="lbl">Área principal</label>
+<div class="spec-grid">
+  ${SPECS.map(s=>`<button class="spec-btn${S.spec===s.key?' sel':''}" data-spec="${s.key}"><span class="spec-icon">${s.icon}</span><span class="spec-label">${s.label}</span></button>`).join('')}
+</div>
+<label class="lbl">Urgência</label>
+${URGENCY.map(u=>`<button class="urg-btn${S.urg===u.value?' sel':''}" data-urg="${u.value}" style="${S.urg===u.value?`border-color:${u.color};background:${u.color}14`:''}"><span class="urg-dot" style="background:${u.color}"></span><span class="urg-label">${u.label}</span></button>`).join('')}
+<div style="height:12px"></div>
+<label class="lbl">Descreva *</label>
+<textarea id="iDesc" placeholder="${fn?fn+', c':'C'}onte o que está sentindo...">${S.desc}</textarea>
+<div class="divider-m"></div>
+<div class="row-btns">
+  <button class="mbtn-ghost" id="s2back">← Voltar</button>
+  <button class="mbtn" id="s2submit" ${ok?'':'disabled'}>Receber orientação →</button>
+</div>`}
+
+function screen3(){const fn=S.nome.split(' ')[0];return`
+<div class="loading-wrap">
+  <span class="loading-icon">◎</span>
+  <h2 class="mc-title">Analisando…</h2>
+  <p class="mc-sub">Preparando uma orientação para você${fn?', '+fn:''}.</p>
+  <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+</div>`}
+
+function screen4(){
+  const spec=SPECS.find(s=>s.key===S.spec);
+  const urg=URGENCY.find(u=>u.value===S.urg);
+  return`
+${urg?`<div style="margin-bottom:14px"><span style="display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;background:${urg.color}18;border:1px solid ${urg.color}40;color:${urg.color};font-size:11px;font-weight:600;text-transform:uppercase">● ${urg.label}</span></div>`:''}
+<div class="dr-header">
+  <div class="dr-avatar">M</div>
+  <div><div class="dr-name">Dr. Marcel Ferroni</div><div class="dr-cro">CRO-SP 140.427 · Odontologia Estética</div></div>
+</div>
+${spec?`<div class="tag-spec">${spec.icon} ${spec.label}</div>`:''}
+<div class="resp-body"><p>${md(S.resp)}</p></div>
+<div class="cta-box">
+  <h3>Pronto para o próximo passo?</h3>
+  <p>A consulta presencial é onde a transformação acontece. Reserve seu horário agora.</p>
+  <a href="${wurl(S.nome,spec?.label)}" target="_blank" class="btn-wapp">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Agendar consulta presencial
+  </a>
+  <button class="btn-reset" id="btnReset">↺ Nova consulta</button>
+</div>`}
+
+/* ─── EVENTOS ─── */
+function bind(){
+  /* step 0 */
+  $i('s0next')?.addEventListener('click',()=>{S.step=1;render()});
+  /* step 1 */
+  const iNome=$i('iNome'),iEmail=$i('iEmail'),iTel=$i('iTel'),s1n=$i('s1next');
+  iNome?.addEventListener('input',e=>{S.nome=e.target.value;if(s1n)s1n.disabled=S.nome.trim().length<2});
+  iEmail?.addEventListener('input',e=>S.email=e.target.value);
+  iTel?.addEventListener('input',e=>S.tel=e.target.value);
+  s1n?.addEventListener('click',()=>{if(S.nome.trim().length>=2){S.step=2;render()}});
+  /* step 2 */
+  document.querySelectorAll('.spec-btn').forEach(b=>b.addEventListener('click',()=>{S.spec=b.dataset.spec;render()}));
+  document.querySelectorAll('.urg-btn').forEach(b=>b.addEventListener('click',()=>{S.urg=b.dataset.urg;render()}));
+  $i('iDesc')?.addEventListener('input',e=>{S.desc=e.target.value;const s=$i('s2submit');if(s)s.disabled=!(S.spec&&S.urg&&S.desc.trim().length>10)});
+  $i('s2back')?.addEventListener('click',()=>{S.step=1;render()});
+  $i('s2submit')?.addEventListener('click',()=>{if(S.spec&&S.urg&&S.desc.trim().length>10)submit()});
+  /* step 4 */
+  $i('btnReset')?.addEventListener('click',()=>{Object.assign(S,{step:0,nome:'',email:'',tel:'',spec:null,urg:null,desc:'',resp:''});render()});
+}
+
+/* ─── SUBMIT ─── */
+async function submit(){
+  S.step=3;render();
+  const spec=SPECS.find(s=>s.key===S.spec);
+  const urg=URGENCY.find(u=>u.value===S.urg);
+  let ai='';
+  try{
+    /* No canvas do Claude.ai a chave é gerenciada automaticamente.
+       Em produção (servidor próprio), preencha CONFIG.ANTHROPIC_KEY
+       e adicione o header 'anthropic-dangerous-direct-browser-access':'true' */
+    const headers={'Content-Type':'application/json','anthropic-version':'2023-06-01'};
+    const chaveConfigurada = CONFIG.ANTHROPIC_KEY && CONFIG.ANTHROPIC_KEY !== 'SUA_CHAVE_ANTHROPIC_AQUI';
+    if(chaveConfigurada){
+      headers['x-api-key']=CONFIG.ANTHROPIC_KEY;
+      headers['anthropic-dangerous-direct-browser-access']='true';
+    }
+    const r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers,
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1200,
+        system:SYS,
+        messages:[{role:'user',content:`Nome do paciente: ${S.nome}\nÁrea de interesse: ${spec?.label||'Geral'}\nNível de urgência: ${urg?.label||'-'}\nDescrição completa do paciente: ${S.desc}`}]
+      })
+    });
+    const d=await r.json();
+    if(d.error){throw new Error(d.error.message||'API error')}
+    ai=d.content?.map(b=>b.text||'').join('')||'';
+    if(!ai) throw new Error('Resposta vazia');
+  }catch(e){
+    console.error('Erro API:',e);
+    ai=`Olá, ${S.nome||'paciente'}! 😊\n\nRecebi sua mensagem e entendo a sua preocupação. Infelizmente estou com uma instabilidade técnica no momento para processar sua orientação completa.\n\nMas não se preocupe — o Dr. Marcel está pronto para te atender pessoalmente e entender sua situação com toda a atenção que você merece.\n\n**Entre em contato agora pelo WhatsApp** e vamos agendar o melhor horário para você. Seu sorriso merece cuidado real. Vamos conversar pessoalmente?`;
+  }
+  S.resp=ai;
+  try{
+    emailjs.init(CONFIG.EMAILJS_PUBLIC_KEY);
+    await emailjs.send(CONFIG.EMAILJS_SERVICE_ID,CONFIG.EMAILJS_TEMPLATE_ID,{
+      to_email:CONFIG.SEU_EMAIL,lead_nome:S.nome||'-',lead_email:S.email||'-',lead_tel:S.tel||'-',
+      lead_area:spec?.label||'-',lead_urg:urg?.label||'-',lead_desc:S.desc,lead_resp:ai,
+      data_hora:new Date().toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})
+    });
+    toast('✦ Lead registrado com sucesso!');
+  }catch(e){console.warn('EmailJS não configurado:',e)}
+  S.step=4;render();
+}
+
+/* ─── MODAL OPEN/CLOSE ─── */
+$i('btnAbrirConsulta').addEventListener('click',()=>{
+  S.step=0;render();
+  $i('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+});
+$i('modalOverlay').addEventListener('click',e=>{
+  if(e.target===$i('modalOverlay')){fecharModal()}
+});
+function fecharModal(){$i('modalOverlay').classList.remove('open');document.body.style.overflow=''}
+
+/* ─── FOTO ─── */
+document.getElementById('photo').src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/wAAREgAEAAQDASIAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAACf/EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AJQAB/9k=';
+</script>
+</body>
+</html>
