@@ -439,7 +439,6 @@ async function submit(){
   let ai='';
   try{
 const headers={'Content-Type':'application/json'};
-    }
     const r=await fetch('/.netlify/functions/claude',{
       method:'POST',headers,
       body:JSON.stringify({
