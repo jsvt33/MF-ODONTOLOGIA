@@ -12,11 +12,10 @@
    ⚙️  CONFIGURAÇÕES — edite antes de publicar
    ══════════════════════════════════════════ */
 const CONFIG = {
-  ANTHROPIC_KEY:       "SUA_CHAVE_ANTHROPIC_AQUI",
-  EMAILJS_PUBLIC_KEY:  "SUA_PUBLIC_KEY_EMAILJS",
-  EMAILJS_SERVICE_ID:  "SUA_SERVICE_ID_EMAILJS",
-  EMAILJS_TEMPLATE_ID: "SUA_TEMPLATE_ID_EMAILJS",
-  SEU_EMAIL:           "seu@email.com.br",
+  EMAILJS_PUBLIC_KEY:  "962Xs1N5YT91gUv71",
+  EMAILJS_SERVICE_ID:  "service_2n9v3k9",
+  EMAILJS_TEMPLATE_ID: "template_tczlyut",
+  SEU_EMAIL:           "fdemoura23@gmail.com",
   WHATSAPP:            "5511943123230",
   INSTAGRAM:           "https://www.instagram.com/dr.marcelmoura",
 };
@@ -431,7 +430,6 @@ function bind(){
   $i('s2submit')?.addEventListener('click',()=>{if(S.spec&&S.urg&&S.desc.trim().length>10)submit()});
   /* step 4 */
   $i('btnReset')?.addEventListener('click',()=>{Object.assign(S,{step:0,nome:'',email:'',tel:'',spec:null,urg:null,desc:'',resp:''});render()});
-}
 
 /* ─── SUBMIT ─── */
 async function submit(){
@@ -440,20 +438,12 @@ async function submit(){
   const urg=URGENCY.find(u=>u.value===S.urg);
   let ai='';
   try{
-    /* No canvas do Claude.ai a chave é gerenciada automaticamente.
-       Em produção (servidor próprio), preencha CONFIG.ANTHROPIC_KEY
-       e adicione o header 'anthropic-dangerous-direct-browser-access':'true' */
-    const headers={'Content-Type':'application/json','anthropic-version':'2023-06-01'};
-    const chaveConfigurada = CONFIG.ANTHROPIC_KEY && CONFIG.ANTHROPIC_KEY !== 'SUA_CHAVE_ANTHROPIC_AQUI';
-    if(chaveConfigurada){
-      headers['x-api-key']=CONFIG.ANTHROPIC_KEY;
-      headers['anthropic-dangerous-direct-browser-access']='true';
+const headers={'Content-Type':'application/json'};
     }
-    const r=await fetch('https://api.anthropic.com/v1/messages',{
+    const r=await fetch('/.netlify/functions/claude',{
       method:'POST',headers,
       body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:1200,
+        
         system:SYS,
         messages:[{role:'user',content:`Nome do paciente: ${S.nome}\nÁrea de interesse: ${spec?.label||'Geral'}\nNível de urgência: ${urg?.label||'-'}\nDescrição completa do paciente: ${S.desc}`}]
       })
