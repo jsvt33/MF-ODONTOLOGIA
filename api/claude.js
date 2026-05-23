@@ -12,7 +12,7 @@ export default async function handler(req, res) {
         'x-api-key': process.env.ANTHROPIC_KEY,
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        model: claude-sonnet-4-5,
         max_tokens: 1200,
         system: req.body.system,
         messages: req.body.messages,
